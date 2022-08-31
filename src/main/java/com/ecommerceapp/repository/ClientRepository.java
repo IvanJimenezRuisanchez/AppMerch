@@ -1,4 +1,7 @@
 package com.ecommerceapp.repository;
 
-public class ClientRepository {
+import com.ecommerceapp.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClientRepository extends JpaRepository <Client, Integer> {
 }
