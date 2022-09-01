@@ -8,21 +8,33 @@
             </svg>
             <p>Enter your email addres and we'll send you an email with instructions to reset your password
             </p>
-            <input id="input" type="email" class="form-control" placeholder="Email address">
-            <button id="loginButton" type="submit" class="btn w-100 mt-4 =">SEND</button><br><br><hr>
+            <input id="input" type="email" class="form-control" placeholder="Email address" v-model="email">
+            <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="sumbit">SEND</button><br><br><hr>
             <div id="info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                 </svg>
-                <p id="icon">If you dont receive an email from us within a few minutes check your spam filter as sometimes they end up in there. The email will be from:<br><span>blabla@help.21</span></p>
+                <p id="icon">If you dont receive an email from us within a few minutes check your spam filter as sometimes they end up in there. The email will be from:<br><span>
+                appmerchproject@gmail.com</span></p>
             </div>
         </div>
     </div>
 </template>
 <script>
+    import ClientService from '@/service/ClientService';
     export default{
-        name: 'ResetPassword'
+        name: 'ResetPassword',
+        data(){
+            return{
+                email : ''
+            }
+        },
+        methods : {
+            sumbit: function(){
+                ClientService.resetPassword(this.email)   
+            }
+        }
     }
 </script>
 <style>

@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ServiceClient {
@@ -17,10 +18,27 @@ public class ServiceClient {
     private PasswordEncoder passwordEncoder;
 
     public void enregistrerClient (String firstName,String lastName,String email,String passWord){
+        UUID uuid = UUID.randomUUID();
         passWord = passwordEncoder.encode(passWord);
-        clientRepository.save(new Client(firstName,lastName,email,passWord));
+        Client client = new Client(firstName,lastName,email,passWord,uuid);
+        clientRepository.save(client);
     }
 
+    public boolean resetPassword(String email,String passWord,String uuid){
+        UUID uniqueKey = UUID.randomUUID();
+        if(clientRepository.getUuid(email).equals(uuid)){
+            Client client = clientRepository.getClientByEmail(email);
+            client.setUuid(uniqueKey);
+            clientRepository.save(client);
+            return true;
+        }
+        return false;
+    }
+
+    public ClientDto getClientDto(String email){
+        Client client = clientRepository.getClientByEmail(email.toUpperCase());
+        return clientToDto(client);
+    }
     public boolean login(String email,String passWord){
         Client client = clientRepository.getClientByEmail(email.toUpperCase());
         boolean isClient = true;
@@ -33,5 +51,9 @@ public class ServiceClient {
             }
         }
         return isClient;
+    }
+
+    private ClientDto clientToDto(Client client){
+        return  new ClientDto(client.getFirstName(),client.getLastName(),client.getEmail(),client.getPassWord(),client.getUuid());
     }
 }

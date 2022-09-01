@@ -3,11 +3,15 @@ package com.ecommerceapp.controllers;
 import com.ecommerceapp.dto.ClientDto;
 import com.ecommerceapp.dto.EmailDto;
 import com.ecommerceapp.dto.LoginDto;
+import com.ecommerceapp.model.Client;
 import com.ecommerceapp.service.EmailService;
 import com.ecommerceapp.service.ServiceClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+
+import java.rmi.server.UID;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/")
@@ -31,15 +35,20 @@ public class RootController {
     @PostMapping(value = "/login")
     @CrossOrigin(origins = "http://localhost:8080")
     public void empreuntPost(@RequestBody final LoginDto loginDto) {
-        EmailDto succ= new EmailDto(loginDto.getEmail(),"Login Successful Login","Login",null);
-        EmailDto fail= new EmailDto(loginDto.getEmail(),"Login","Login Fail",null);
-        if(serviceClient.login(loginDto.getEmail(), loginDto.getPassWord())){
-            emailService.sendSimpleMail(succ);
+        if (serviceClient.login(loginDto.getEmail(),loginDto.getPassWord())){
+            System.out.println("Login Succe");
         }
-        else {
-            emailService.sendSimpleMail(fail);
-        }
-        System.out.println("Correo enviado");
+    }
+
+    @PostMapping(value = "/resetPassword")
+    @CrossOrigin(origins = "http://localhost:8080")
+    public void resetPassword(@RequestBody final LoginDto loginDto) {
+        ClientDto clientDto = serviceClient.getClientDto(loginDto.getEmail());
+        UUID uuid = clientDto.getUuid();
+        String msgBody = "Forgot your passWord?"+'\n'+
+                "We received a request to reset the password for your account."+'\n'+'\n'+'\n'+'\n'+
+        "To reset your password enter the next token on the validation page: "+ uuid;
+        emailService.sendSimpleMail(new EmailDto( loginDto.getEmail(),msgBody,"Password Reset",null));
     }
 
 
