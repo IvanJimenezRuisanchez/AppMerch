@@ -2,8 +2,8 @@
     <div id="login">
         <component v-bind:is="component"></component>
         <div class="buttons">
-            <button v-if="component == 'login'" id= 'link' class="btn btn-link" v-on:click="component= ''">Forgot your password?</button>
-            <button v-if="component == 'createAccount' " id= 'link' class="btn btn-link" v-on:click="component= 'login'">Login</button>
+            <button v-if="component == 'login'" id= 'link' class="btn btn-link" v-on:click="component= 'resetPassword'">Forgot your password?</button>
+            <button v-if="component == 'createAccount' " id= 'link' class="btn btn-link" v-on:click="component= 'login'">Return To Login</button>
             <button v-if="component == 'login'" id= 'link' class="btn btn-link" v-on:click="component= 'createAccount'">Create your account</button>
         </div>
     </div>
@@ -11,12 +11,14 @@
 <script>
     import Login from './Login.vue';
     import CreateAccount from './CreateAccount.vue';
+    import ResetPassword from './ResetPassword.vue';
     export default{
         name: 'Authentication'
     ,
     components: {
         'login' : Login,
-        'createAccount' : CreateAccount,  
+        'createAccount' : CreateAccount,
+        'resetPassword' : ResetPassword  
     },
     data() {
         return {
@@ -43,7 +45,7 @@
     #login{
         margin: 10px;
         padding: 20px;
-        background-color: whitesmoke;
+        background-color: white;
         border: 1px solid rgba(117, 116, 116, 0.26);
         box-shadow: 1px -2px 15px -3px rgba(0,0,0,0.88);
         border-radius: 15px;
@@ -63,6 +65,13 @@
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: x-large;
     }
+    p{
+        float: left;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: large;
+        margin: 5px;
+        font-weight: bold;
+    }
     #extrabuttons{
         box-shadow: 1px -2px 15px -3px rgba(0,0,0,0.58);
     }
@@ -71,7 +80,7 @@
         padding: 15px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-weight: bold;
-        background-color: floralwhite;
+        background-color: whitesmoke;
     }
     #login input:focus::placeholder{
         color: transparent;
@@ -83,7 +92,7 @@
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: larger;
         font-weight: 500;
-        border-radius: 20px;
+        border-radius: 5px;
         padding: 10px;
     }
     #loginButton:hover{

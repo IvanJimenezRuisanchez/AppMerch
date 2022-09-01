@@ -10,8 +10,6 @@
                 <input id="input" type="text" class="form-control" placeholder="First Name">
                 <label for="input">Last Name</label>
                 <input id="input" type="text" class="form-control" placeholder="Last Name">
-                <label for="input">Birthday</label>
-                <input id="input" type="date" class="form-control"  name="birthday">
             </div>
             <div class="form-group">
                 <label for="input">Email address</label>
