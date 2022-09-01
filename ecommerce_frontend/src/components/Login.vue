@@ -14,7 +14,11 @@
         <div class="form-group">
             <label for="input">Password</label>
             <input id="input" type="password" class="form-control" placeholder="Password">
-            <button id="loginButton" type="submit" class="btn w-100 mt-4 ">LOGIN</button>
+            <button id="loginButton" type="submit" class="btn w-100 mt-4 =">LOGIN</button>
+        </div>
+        <div class="buttons">
+            <a id="link" href="">Forgot your password?</a>
+            <a id="link" href="">Create your account</a>
         </div>
         </div>
     </form>
@@ -26,6 +30,20 @@
     }
 </script>
 <style>
+    .buttons{
+        display: inline-block;
+        padding: 10px;
+        margin-top: 5px;
+    }
+    #link:hover{
+        color: mediumseagreen;
+        transition: all .4s ease-in-out;
+    }
+    #link{
+        color: black;
+        text-decoration: none;
+        margin: 5px;
+    }
     #login{
         margin: 10px;
         padding: 20px;
@@ -65,12 +83,23 @@
         color: transparent;
     }
     #loginButton{
-        background-color: mediumseagreen;
+        background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+        box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
         color: white;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: large;
+        font-size: larger;
+        font-weight: 500;
         border-radius: 20px;
         padding: 10px;
+    }
+    #loginButton:hover{
+        -moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+    #loginButton:hover:focus{
+        outline: none;
     }
         @-webkit-keyframes focus-in-expand-fwd {
     0% {
@@ -106,5 +135,6 @@
         opacity: 1;
     }
     }
+
     
 </style>
