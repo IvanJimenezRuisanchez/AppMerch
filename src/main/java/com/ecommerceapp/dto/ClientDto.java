@@ -1,9 +1,11 @@
 package com.ecommerceapp.dto;
 
 import com.ecommerceapp.model.Client;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Data;
 
 @Data
+@JsonAutoDetect
 public class ClientDto {
     public ClientDto(String firstName, String lastName, String email, String passWord) {
         this.firstName = firstName;

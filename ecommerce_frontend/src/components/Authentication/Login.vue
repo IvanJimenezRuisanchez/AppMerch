@@ -8,19 +8,31 @@
             </svg>
             <div class="form-group">
             <label for="input">Email address</label>
-            <input id="input" type="email" class="form-control" placeholder="Enter your email">
+            <input id="input" type="email" class="form-control" placeholder="Enter your email" v-model="email">
         </div>
         <div class="form-group">
             <label for="input">Password</label>
-            <input id="input" type="password" class="form-control" placeholder="Password">
-            <button id="loginButton" type="submit" class="btn w-100 mt-4 =">LOGIN</button>
+            <input id="input" type="password" class="form-control" placeholder="Password" v-model="passWord">
+            <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="submit">LOGIN</button>
         </div>
         </div>
 </template>
 
 <script>
+    import ClientService from '@/service/ClientService';
     export default {
     name: "Login",
+    data(){
+        return {
+            email : '',
+            passWord : '',
+        }
+    },
+    methods: {
+        submit : function(){
+            ClientService.login(this.email,this.passWord);
+        }
+    }
   }
 </script>
 <style>

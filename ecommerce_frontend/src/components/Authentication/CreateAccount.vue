@@ -7,24 +7,38 @@
             </svg>
             <div class="form-group">
                 <label for="input">First Name</label>
-                <input id="input" type="text" class="form-control" placeholder="First Name">
+                <input id="input" type="text" class="form-control" placeholder="First Name" v-model="firstName">
                 <label for="input">Last Name</label>
-                <input id="input" type="text" class="form-control" placeholder="Last Name">
+                <input id="input" type="text" class="form-control" placeholder="Last Name" v-model="lastName">
             </div>
             <div class="form-group">
                 <label for="input">Email address</label>
-                <input id="input" type="email" class="form-control" placeholder="Enter your email">
+                <input id="input" type="email" class="form-control" placeholder="Enter your email" v-model="email">
             </div>
             <div class="form-group">
                 <label for="input">Password</label>
-                <input id="input" type="password" class="form-control" placeholder="Password">
-            <button id="loginButton" type="submit" class="btn w-100 mt-4 =">CREATE ACCOUNT</button>
+                <input id="input" type="password" class="form-control" placeholder="Password" v-model="passWord">
+            <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="submit">CREATE ACCOUNT</button>
         </div>
         </div>
 </template>
 <script>
+    import ClientService from '@/service/ClientService';
     export default{
-        name : "CreateAccount"
+        name : "CreateAccount",
+        data() {
+            return {
+                firstName : '',
+                lastName : '',
+                email : '',
+                passWord : '',
+            }
+        },
+        methods: {
+        submit : function(){
+            ClientService.createAccount(this.firstName,this.lastName,this.email,this.passWord)
+        }
+    },
     }
 </script>
 <style>
