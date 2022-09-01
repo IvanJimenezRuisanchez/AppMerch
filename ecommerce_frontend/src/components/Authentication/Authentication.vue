@@ -1,12 +1,12 @@
 <template>
-    <div id="login">
+    <form id="login" action="">
         <component v-bind:is="component"></component>
         <div class="buttons">
             <button v-if="component == 'login'" id= 'link' class="btn btn-link" v-on:click="component= 'resetPassword'">Forgot your password?</button>
             <button v-if="component == 'createAccount' " id= 'link' class="btn btn-link" v-on:click="component= 'login'">Return To Login</button>
             <button v-if="component == 'login'" id= 'link' class="btn btn-link" v-on:click="component= 'createAccount'">Create your account</button>
         </div>
-    </div>
+    </form>
 </template>
 <script>
     import Login from './Login.vue';

@@ -7,17 +7,17 @@
             </svg>
             <div class="form-group">
                 <label for="input">First Name</label>
-                <input id="input" type="text" class="form-control" placeholder="First Name" v-model="firstName">
+                <input id="input" type="text" class="form-control" placeholder="First Name" v-model="firstName" required>
                 <label for="input">Last Name</label>
-                <input id="input" type="text" class="form-control" placeholder="Last Name" v-model="lastName">
+                <input id="input" type="text" class="form-control" placeholder="Last Name" v-model="lastName" required>
             </div>
             <div class="form-group">
                 <label for="input">Email address</label>
-                <input id="input" type="email" class="form-control" placeholder="Enter your email" v-model="email">
+                <input id="input" type="email" class="form-control" placeholder="Enter your email" v-model="email" required>
             </div>
             <div class="form-group">
                 <label for="input">Password</label>
-                <input id="input" type="password" class="form-control" placeholder="Password" v-model="passWord">
+                <input id="input" type="password" class="form-control" placeholder="Password" v-model="passWord" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="submit">CREATE ACCOUNT</button>
         </div>
         </div>
