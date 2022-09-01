@@ -1,14 +1,12 @@
 <template>
-  <Login></Login>
+  <Authentication></Authentication>
 </template>
 
 <script>
-import Login from './components/Login.vue';
+import Authentication from './components/Authentication/Authentication.vue';
 export default {
-  name: 'App',
-  components: {
-    Login
-}
+    name: "App",
+    components: { Authentication }
 }
 </script>
 
