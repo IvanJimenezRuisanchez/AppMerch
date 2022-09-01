@@ -17,5 +17,5 @@ public class RootController {
         this.serviceClient = serviceClient;
     }
 
-    
+
 }
