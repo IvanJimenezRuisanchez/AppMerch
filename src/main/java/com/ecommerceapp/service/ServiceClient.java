@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,20 +19,21 @@ public class ServiceClient {
     private PasswordEncoder passwordEncoder;
 
     public void enregistrerClient (String firstName,String lastName,String email,String passWord){
-        UUID uuid = UUID.randomUUID();
+        UUID newToken = UUID.randomUUID();
         passWord = passwordEncoder.encode(passWord);
-        Client client = new Client(firstName,lastName,email,passWord,uuid);
+        Client client = new Client(firstName,lastName,email,passWord,newToken);
         clientRepository.save(client);
     }
 
     public boolean resetPassword(String passWord,String uuid){
-        UUID uniqueKey = UUID.randomUUID();
-        if(clientRepository.getClientByUuid(uuid) == null){
+        UUID newToken = UUID.randomUUID();
+        UUID keyForChange = UUID.fromString(uuid);
+        if(clientRepository.getClientByUuid(keyForChange) == null){
             return false;
         }
         else {
-            Client client = clientRepository.getClientByUuid(uuid);
-            client.setUuid(uniqueKey);
+            Client client = clientRepository.getClientByUuid(keyForChange);
+            client.setUuid(newToken);
             clientRepository.save(client);
             return true;
         }

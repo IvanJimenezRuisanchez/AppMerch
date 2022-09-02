@@ -13,5 +13,5 @@ public interface ClientRepository extends JpaRepository <Client, Integer> {
     @Query(value = "SELECT cl from Client cl WHERE upper(cl.email) = :data")
     Client getClientByEmail(@Param("data") String data);
     @Query(value = "SELECT cl from Client cl WHERE upper(cl.uuid) = :data")
-    Client getClientByUuid(@Param("data") String data);
+    Client getClientByUuid(@Param("data") UUID data);
 }

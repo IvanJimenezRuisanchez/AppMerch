@@ -3,15 +3,13 @@ package com.ecommerceapp.controllers;
 import com.ecommerceapp.dto.ClientDto;
 import com.ecommerceapp.dto.EmailDto;
 import com.ecommerceapp.dto.LoginDto;
-import com.ecommerceapp.dto.UpdatePasswordDto;
-import com.ecommerceapp.model.Client;
+import com.ecommerceapp.dto.ChangePasswordDto;
 import com.ecommerceapp.service.EmailService;
 import com.ecommerceapp.service.ServiceClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import java.rmi.server.UID;
 import java.util.UUID;
 
 @RestController
@@ -54,8 +52,8 @@ public class RootController {
 
     @PostMapping(value = "/updatePassword")
     @CrossOrigin(origins = "http://localhost:8080")
-    public void updatePassword(@RequestBody final UpdatePasswordDto updatePasswordDto) {
-        System.out.println(serviceClient.resetPassword(updatePasswordDto.getPassword(), updatePasswordDto.getKey()));
+    public void changePassWord(@RequestBody final ChangePasswordDto changePasswordDto) {
+        System.out.println(serviceClient.resetPassword(changePasswordDto.getPassWord(), changePasswordDto.getKey()));
     }
 
 
