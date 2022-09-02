@@ -44,10 +44,10 @@ public class RootController {
     public void resetPassword(@RequestBody final LoginDto loginDto) {
         ClientDto clientDto = serviceClient.getClientDto(loginDto.getEmail());
         UUID uuid = clientDto.getUuid();
-        String msgBody = "Forgot your passWord?"+'\n'+
-                "We received a request to reset the password for your account."+'\n'+'\n'+'\n'+'\n'+
-        "To reset your password enter the next token on the validation page: "+ uuid;
-        emailService.sendSimpleMail(new EmailDto( loginDto.getEmail(),msgBody,"Password Reset",null));
+        String msgBody = "Salut!,"+clientDto.getFirstName()+" "+ clientDto.getLastName() +"Mot de passe oublié?"+'\n'+
+                "Nous avons reçu une demande de réinitialisation du mot de passe de votre compte."+'\n'+'\n'+'\n'+'\n'+
+        "Pour réinitialiser votre mot de passe, saisissez le token suivant sur la page de validation :"+ uuid;
+        emailService.sendSimpleMail(new EmailDto( loginDto.getEmail(),msgBody,"Réinitialisation du mot de passe",null));
     }
 
     @PostMapping(value = "/updatePassword")
