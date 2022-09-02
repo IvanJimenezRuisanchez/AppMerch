@@ -34,9 +34,7 @@ public class RootController {
     @PostMapping(value = "/login")
     @CrossOrigin(origins = "http://localhost:8080")
     public void empreuntPost(@RequestBody final LoginDto loginDto) {
-        if (serviceClient.login(loginDto.getEmail(),loginDto.getPassWord())){
-            System.out.println("Login Succe");
-        }
+        serviceClient.login(loginDto.getEmail(),loginDto.getPassWord());
     }
 
     @PostMapping(value = "/resetPassword")
@@ -44,16 +42,16 @@ public class RootController {
     public void resetPassword(@RequestBody final LoginDto loginDto) {
         ClientDto clientDto = serviceClient.getClientDto(loginDto.getEmail());
         UUID uuid = clientDto.getUuid();
-        String msgBody = "Salut!,"+clientDto.getFirstName()+" "+ clientDto.getLastName() +"Mot de passe oublié?"+'\n'+
+        String msgBody = "Salut!, "+clientDto.getFirstName()+" "+ clientDto.getLastName() +" Mot de passe oublié?"+'\n'+
                 "Nous avons reçu une demande de réinitialisation du mot de passe de votre compte."+'\n'+'\n'+'\n'+'\n'+
-        "Pour réinitialiser votre mot de passe, saisissez le token suivant sur la page de validation :"+ uuid;
+        "Pour réinitialiser votre mot de passe, saisissez le token suivant sur la page de validation : "+ uuid;
         emailService.sendSimpleMail(new EmailDto( loginDto.getEmail(),msgBody,"Réinitialisation du mot de passe",null));
     }
 
     @PostMapping(value = "/updatePassword")
     @CrossOrigin(origins = "http://localhost:8080")
     public void changePassWord(@RequestBody final ChangePasswordDto changePasswordDto) {
-        System.out.println(serviceClient.resetPassword(changePasswordDto.getPassWord(), changePasswordDto.getKey()));
+        serviceClient.resetPassword(changePasswordDto.getPassWord(), changePasswordDto.getKey());
     }
 
 

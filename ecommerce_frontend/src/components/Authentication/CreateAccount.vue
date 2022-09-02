@@ -1,5 +1,5 @@
 <template>
-    <form id="login" action="">
+    <form id="login" action=""   >
         <div class="form-group">
             <h2>S'inscrire</h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
@@ -8,7 +8,7 @@
             </svg>
             <div class="form-group">
                 <label for="input" >Prenom</label>
-                <input required id="input" type="text" class="form-control" placeholder="Prenom" v-model="firstName" v-on:keydown.enter.prevent='submit' />
+                <input required id="input" type="text" class="form-control" placeholder="Prenom" v-model="firstName" v-on:keydown.enter.prevent='submit'/>
                 <label>Nom de Famille</label>
                 <input required id="input" type="text" class="form-control" placeholder="Nom de Famille" v-model="lastName" v-on:keydown.enter.prevent='submit' />
             </div>
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="input">Mot de passe</label>
                 <input required id="input" type="password" class="form-control" placeholder="Password" v-model="passWord" v-on:keydown.enter.prevent='submit' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"/>
-            <router-link to="/"><button id="loginButton" type="submit" class="btn w-100 mt-4" v-on:click="submit">CRÉER UNE COMPTE</button></router-link>
+            <router-link to="/"><button id="loginButton" type="submit" class="btn w-100 mt-4" v-on:click="createAccount">CRÉER UNE COMPTE</button></router-link>
         </div>
         <router-link to="/"><button id= 'link' class="btn btn-link">Retourner au Login</button></router-link>
     </div>
@@ -38,7 +38,7 @@
             }
         },
         methods: {
-        submit : function(){
+        createAccount : function(){
             ClientService.createAccount(this.firstName,this.lastName,this.email,this.passWord)
         }
     },

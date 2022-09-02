@@ -1,5 +1,5 @@
 <template>
-    <form id="login" action="">
+    <form id="login" action="" >
         <div class="form-group">
             <h2>Connexion</h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -15,7 +15,7 @@
                 <label for="input">Mot de passe</label>
                 <input  id="input" type="password" class="form-control" placeholder="Mot de passe" v-model="passWord"  v-on:keydown.enter.prevent='submit' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                 <router-link to="/website">
-                    <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="submit">LOGIN</button>
+                    <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="login">LOGIN</button>
                 </router-link>
         </div>
         <div class="buttons">
@@ -37,7 +37,7 @@
         }
     },
     methods: {
-        submit : function(){
+        login : function(){
             ClientService.login(this.email,this.passWord);
         }
     }

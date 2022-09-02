@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.awt.event.KeyEvent;
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,18 +21,23 @@ public class ServiceClient {
         passWord = passwordEncoder.encode(passWord);
         Client client = new Client(firstName,lastName,email,passWord,newToken);
         clientRepository.save(client);
+        System.out.println("Inscription reussite");
     }
 
-    public boolean resetPassword(String passWord,String uuid){
+    public boolean resetPassword(String neWpassWord,String uuid){
         UUID newToken = UUID.randomUUID();
         UUID keyForChange = UUID.fromString(uuid);
         if(clientRepository.getClientByUuid(keyForChange) == null){
+            System.out.println("Token invalide ou utlisateur invalide");
             return false;
         }
         else {
             Client client = clientRepository.getClientByUuid(keyForChange);
+            System.out.println("Mot de passe avant: "+ passwordEncoder.encode(client.getPassWord()));
             client.setUuid(newToken);
+            client.setPassWord(neWpassWord);
             clientRepository.save(client);
+            System.out.println("Mot de passe apres: "+ neWpassWord);
             return true;
         }
     }
@@ -46,14 +49,11 @@ public class ServiceClient {
     public boolean login(String email,String passWord){
         Client client = clientRepository.getClientByEmail(email.toUpperCase());
         boolean isClient = true;
-        if(client == null){
+        if(client == null && !passwordEncoder.matches(passWord,client.getPassWord())){
             isClient = false;
+            System.out.println("Utilisateur non valide ou mot de passe non valide");
         }
-        else {
-            if(!passwordEncoder.matches(passWord,client.getPassWord())){
-                isClient = false;
-            }
-        }
+        System.out.println("Connexion acceptee");
         return isClient;
     }
 

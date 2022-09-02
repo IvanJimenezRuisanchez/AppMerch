@@ -9,7 +9,7 @@
             </p>
             <input id="input" type="email" class="form-control" placeholder="Adresse e-mail" v-model="email" required v-on:keydown.enter.prevent='submit'>
             <router-link to="/updatePassword">
-                <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="sumbit" >SEND</button>
+                <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="reset" >SEND</button>
             <br><br><hr>
             </router-link>
             <div id="info">
@@ -33,7 +33,7 @@
             }
         },
         methods : {
-            sumbit: function(){
+            reset: function(){
                 ClientService.resetPassword(this.email) 
             }
         }
