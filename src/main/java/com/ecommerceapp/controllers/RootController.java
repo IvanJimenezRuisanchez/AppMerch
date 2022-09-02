@@ -3,6 +3,7 @@ package com.ecommerceapp.controllers;
 import com.ecommerceapp.dto.ClientDto;
 import com.ecommerceapp.dto.EmailDto;
 import com.ecommerceapp.dto.LoginDto;
+import com.ecommerceapp.dto.UpdatePasswordDto;
 import com.ecommerceapp.model.Client;
 import com.ecommerceapp.service.EmailService;
 import com.ecommerceapp.service.ServiceClient;
@@ -49,6 +50,12 @@ public class RootController {
                 "We received a request to reset the password for your account."+'\n'+'\n'+'\n'+'\n'+
         "To reset your password enter the next token on the validation page: "+ uuid;
         emailService.sendSimpleMail(new EmailDto( loginDto.getEmail(),msgBody,"Password Reset",null));
+    }
+
+    @PostMapping(value = "/updatePassword")
+    @CrossOrigin(origins = "http://localhost:8080")
+    public void updatePassword(@RequestBody final UpdatePasswordDto updatePasswordDto) {
+        System.out.println(serviceClient.resetPassword(updatePasswordDto.getPassword(), updatePasswordDto.getKey()));
     }
 
 

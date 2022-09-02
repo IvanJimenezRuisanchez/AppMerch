@@ -1,4 +1,5 @@
 <template>
+    <form id="login" action="">
         <div>
             <h2>Login</h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -15,7 +16,12 @@
             <input id="input" type="password" class="form-control" placeholder="Password" v-model="passWord"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="submit">LOGIN</button>
         </div>
+        <div class="buttons">
+            <router-link to="ResetPassword"><button id= 'link' class="btn btn-link">Forgot your password?</button></router-link>
+            <router-link to="CreateAccount"><button id= 'link' class="btn btn-link">Create your account</button></router-link>
         </div>
+        </div>
+    </form>
 </template>
 
 <script>
@@ -35,5 +41,6 @@
     }
   }
 </script>
-<style>
+<style lang="css" scoped>
+    @import 'style.css';
 </style>

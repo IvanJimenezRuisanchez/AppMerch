@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <form id="login" action="">
             <h2>SignUp</h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
@@ -18,9 +18,10 @@
             <div class="form-group">
                 <label for="input">Password</label>
                 <input id="input" type="password" class="form-control" placeholder="Password" v-model="passWord" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-            <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="submit">CREATE ACCOUNT</button>
+            <router-link to="/"><button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="submit">CREATE ACCOUNT</button></router-link>
         </div>
-        </div>
+        <router-link to="/"><button id= 'link' class="btn btn-link">Return To Login</button></router-link>
+    </form>
 </template>
 <script>
     import ClientService from '@/service/ClientService';
@@ -41,6 +42,6 @@
     },
     }
 </script>
-<style>
-
+<style lang="css" scoped>
+    @import 'style.css';
 </style>

@@ -1,12 +1,10 @@
 <template>
-  <Authentication></Authentication>
+  <router-view></router-view>
 </template>
 
 <script>
-import Authentication from './components/Authentication/Authentication.vue';
 export default {
-    name: "App",
-    components: { Authentication }
+    name: "App"
 }
 </script>
 

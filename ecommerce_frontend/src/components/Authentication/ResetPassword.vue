@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <div class="form-group">
+    <form id="login" action=""> 
             <h2>Reset Password</h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-envelope-check" viewBox="0 0 16 16">
             <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
@@ -8,8 +7,11 @@
             </svg>
             <p>Enter your email addres and we'll send you an email with instructions to reset your password
             </p>
-            <input id="input" type="email" class="form-control" placeholder="Email address" v-model="email">
-            <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="sumbit">SEND</button><br><br><hr>
+            <input id="input" type="email" class="form-control" placeholder="Email address" v-model="email" required>
+            <router-link to="/updatePassword">
+                <button id="loginButton" type="submit" class="btn w-100 mt-4 =" v-on:click="sumbit" >SEND</button>
+            <br><br><hr>
+            </router-link>
             <div id="info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -18,26 +20,31 @@
                 <p id="icon">If you dont receive an email from us within a few minutes check your spam filter as sometimes they end up in there. The email will be from:<br><span>
                 appmerchproject@gmail.com</span></p>
             </div>
-        </div>
-    </div>
+    <router-link to="/"><button id= 'link' class="btn btn-link">RETURN TO LOGIN</button></router-link>
+    </form>
 </template>
 <script>
     import ClientService from '@/service/ClientService';
+    import UpdatePassword from './UpdatePassword.vue';
     export default{
         name: 'ResetPassword',
+        components :  {
+            UpdatePassword
+        },
         data(){
             return{
-                email : ''
+                email : '',
             }
         },
         methods : {
             sumbit: function(){
-                ClientService.resetPassword(this.email)   
+                ClientService.resetPassword(this.email) 
             }
         }
     }
 </script>
-<style>
+<style lang="css" scoped>
+    @import 'style.css';
     #info{
         display: flex;
     }

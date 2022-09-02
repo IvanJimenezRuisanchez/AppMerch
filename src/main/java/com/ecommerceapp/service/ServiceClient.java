@@ -24,15 +24,17 @@ public class ServiceClient {
         clientRepository.save(client);
     }
 
-    public boolean resetPassword(String email,String passWord,String uuid){
+    public boolean resetPassword(String passWord,String uuid){
         UUID uniqueKey = UUID.randomUUID();
-        if(clientRepository.getUuid(email).equals(uuid)){
-            Client client = clientRepository.getClientByEmail(email);
+        if(clientRepository.getClientByUuid(uuid) == null){
+            return false;
+        }
+        else {
+            Client client = clientRepository.getClientByUuid(uuid);
             client.setUuid(uniqueKey);
             clientRepository.save(client);
             return true;
         }
-        return false;
     }
 
     public ClientDto getClientDto(String email){
