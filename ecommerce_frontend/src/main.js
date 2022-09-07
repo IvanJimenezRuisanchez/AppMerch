@@ -6,14 +6,16 @@ import Login from './components/Authentication/Login.vue'
 import CreateAccount from './components/Authentication/CreateAccount.vue'
 import UpdatePassword from './components/Authentication/UpdatePassword.vue'
 import ResetPassword from './components/Authentication/ResetPassword.vue'
+import HomePage from './components/HomePage/HomePage.vue'
 
 const router = createRouter({
     history: createWebHistory(),
     routes : [
-        {path : '/', name : 'Login', component : Login},
+        {path : '/login', name : 'Login', component : Login},
         {path : '/createAccount', name : 'CreateAccount', component : CreateAccount},
         {path : '/updatePassword', name : 'UpdatePassword', component : UpdatePassword},
-        {path : '/resetPassword', name : 'ResetPassword', component : ResetPassword}
+        {path : '/resetPassword', name : 'ResetPassword', component : ResetPassword},
+        {path: '/', name: 'HomePage', component : HomePage},
     ]
 })
 import 'bootstrap/dist/css/bootstrap.min.css'
