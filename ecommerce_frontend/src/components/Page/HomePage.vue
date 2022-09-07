@@ -20,9 +20,16 @@
             </div>
         </div>
     </div>
-    <div id="side-div">
-        <h1 class="mt-2">{{section}}</h1>
-        <component v-bind:is=composant></component>
+    <div class="container-fluid" id="side-div">
+        <div class="justify-content-center">
+            <div>
+                <span><h1 class="mt-2">{{section}}</h1>
+                <button id="cancel" class="btn shadow-none" v-on:click="hideSideDiv"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg></button></span>
+            </div>
+            <component :is="composant"></component>
+        </div>
     </div>
 </template>
 
@@ -31,19 +38,22 @@
     export default{
         name: 'HomePage',
         components:{
-             LoginVue
+             'Login' : LoginVue
         },
         data() {
             return {
                 section : '',
-                composant : ''
+                composant : '' 
             }
         },
         methods: {
         showLogin : function(section){
             document.getElementById("side-div").style.display = "block"
             this.section = section
-            composant = LoginVue
+            this.composant = section
+        },
+        hideSideDiv: function(){
+            document.getElementById("side-div").style.display = "none"
         }
     }
     }
@@ -97,6 +107,16 @@
         box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.27);
         display: none;
         background-color: white;
+    }
+    #side-div h1{
+        text-transform: uppercase;
+    }
+    #cancel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin: 20px;
+        border: none;
     }
 
     @-webkit-keyframes slide-in-right {
