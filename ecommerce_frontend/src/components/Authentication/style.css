@@ -42,14 +42,14 @@ p{
 #extrabuttons{
     box-shadow: 1px -2px 15px -3px rgba(0,0,0,0.58);
 }
-#login input{
+input{
     border-radius: 20px;
     padding: 15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     background-color: whitesmoke;
 }
-#login input:focus::placeholder{
+input:focus::placeholder{
     color: transparent;
 }
 #loginButton{
