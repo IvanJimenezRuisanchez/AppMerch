@@ -1,6 +1,5 @@
 <template>
-    <div class="row">
-    <div class="col-md-3">
+    <div class="col-2">
         <div class="product-grid">
             <div class="product-image">
                 <a href="#" class="image">
@@ -19,7 +18,6 @@
             </div>
         </div>
     </div>
-    </div>
 </template>
 
 <script>
@@ -29,7 +27,9 @@
 </script>
 
 <style>
-
+.row{
+    border: none;
+}
 .product-grid{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;

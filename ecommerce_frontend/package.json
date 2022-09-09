@@ -16,6 +16,7 @@
     "vue": "^3.2.13",
     "vue-keypress": "^2.1.1",
     "vue-router": "^4.1.5",
+    "vuex": "^4.0.2",
     "webpack": "^5.74.0"
   },
   "devDependencies": {

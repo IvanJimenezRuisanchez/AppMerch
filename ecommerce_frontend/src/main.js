@@ -20,5 +20,6 @@ const router = createRouter({
         {path: '/product', name: 'Product', component : Product}
     ]
 })
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 createApp(App).use(router).mount('#app')

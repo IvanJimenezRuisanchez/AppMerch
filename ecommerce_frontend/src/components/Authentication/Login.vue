@@ -37,7 +37,7 @@
     },
     methods: {
         login : function(){
-            ClientService.login(this.email,this.passWord);
+            ClientService.login(this.email,this.passWord)
         }
     }
   }

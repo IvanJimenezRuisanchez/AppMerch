@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 p-0">
+            <div class="col-lg-12 col-md-12 col-sm-2 p-0">
                 <h1>Mon Merch App</h1>
                 <ul class="list-group list-group-horizontal justify-content-center">
                     <p></p>
@@ -63,8 +63,6 @@
     .container-fluid{
         -webkit-box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.27); 
         box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.27);
-        position: fixed;
-        top: 0;
     }
     .row{
         border: 1px solid rgba(135, 132, 132, 0.393);
@@ -98,7 +96,7 @@
     }
     #side-div{
         height: 100%;
-        width: 30%;
+        width: 20%;
         position: fixed;
         top: 0;
         right: 0;
