@@ -11,4 +11,6 @@ import java.util.List;
 public interface ProduitRepository extends JpaRepository<Produit, Integer> {
     @Query(value = "SELECT p from Produit p WHERE upper(p.nom) = :data")
     List<Produit> findByNom(@Param("data") String data);
+    @Query(value = "SELECT p from Produit p WHERE upper(p.categorie) = :data")
+    List<Produit> findByCategorie(@Param("data") String data);
 }

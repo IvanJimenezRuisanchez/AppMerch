@@ -68,4 +68,12 @@ public class RootController {
         return serviceClient.getProductsByName(nom);
     }
 
+    @GetMapping(value = "/productsByCategory")
+    @CrossOrigin(origins = "http://localhost:8080")
+    @ResponseBody
+    public List<ProduitDto> getProductsByCategorie(@RequestParam("categorie") String categorie) {
+        System.out.println(categorie);
+        return serviceClient.getProductsByCategorie(categorie);
+    }
+
 }

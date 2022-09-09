@@ -75,12 +75,16 @@ public class ServiceClient {
     private List<ProduitDto> toProduitDTOList(List<Produit> produits){
         List<ProduitDto> produitDtos = new ArrayList<>();
         for(Produit produit : produits){
-            produitDtos.add(new ProduitDto(produit.getPrix(),produit.getNom()));
+            produitDtos.add(new ProduitDto(produit.getPrix(),produit.getNom(),produit.getCategorie()));
         }
         return produitDtos;
     }
 
     public List<ProduitDto> getProductsByName(String nom) {
         return toProduitDTOList(produitRepository.findByNom(nom.toUpperCase()));
+    }
+
+    public List<ProduitDto> getProductsByCategorie(String categorie) {
+        return toProduitDTOList(produitRepository.findByCategorie(categorie.toUpperCase()));
     }
 }

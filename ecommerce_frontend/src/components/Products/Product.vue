@@ -2,7 +2,7 @@
         <div class="product-grid">
             <div class="product-image">
                 <a href="#" class="image">
-                    <img src="../../assets/img/tshirt.jpg">
+                    <img src="../../assets/img/jordan.jpg">
                 </a>
                 <ul class="product-links">
                     <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -23,7 +23,7 @@
         name: 'Product',
         props: {
             'nom' : String,
-            'prix': Number
+            'prix': Number,
         },
     }
 </script>

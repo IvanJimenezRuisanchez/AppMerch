@@ -1,23 +1,20 @@
 <template>
    <div class="container"></div>
     <div  class="row mt-5 mb-2 justify-content-end">
-      <div class="col-4">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-          <label class="form-check-label" for="inlineRadio1">Shorts</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-          <label class="form-check-label" for="inlineRadio1">Shorts</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <div class="col-3">
+        <div class="form-check form-check-inline ">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="chandail" v-model="checked" v-on:change="chercherProduitsParCategorie">
           <label class="form-check-label" for="inlineRadio2">Chandails</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="hoodie" v-model="checked" v-on:change="chercherProduitsParCategorie">
           <label class="form-check-label" for="inlineRadio3">Hoodies</label>
         </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="tous" v-model="checked" v-on:change="chercherProduitsParCategorie">
+          <label class="form-check-label" for="inlineRadio3">Tous</label>
+        </div>
+        <span>{{selected}}</span>
       </div>
       <div class="col-2" >
         <div class="input-group rounded">
@@ -50,12 +47,22 @@ export default {
   data() {
     return {
         products: null,
-        param: ''
+        param: null,
+        checked: '',
+        
     }
   },
   methods :{
     chercherProduitsParNom : function(){
         ClientService.getProductsByName(this.param).then(response => ( this.products = response.data));
+    },
+    chercherProduitsParCategorie : function(){
+          if(this.checked == 'tous'){
+            ClientService.getProducts().then(response => ( this.products = response.data));
+          }else{
+            ClientService.getProductsByCategory(this.checked).then(response => ( this.products = response.data));
+          }
+
     }
   },
   mounted(){
@@ -66,9 +73,5 @@ export default {
 <style>
   .container .row{
     border: none;
-  }
-  .input-group{
-    overflow: hidden;
-    z-index: -1;
   }
 </style>

@@ -16,11 +16,16 @@ public class Produit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public Produit(double prix, String nom) {
-        this.prix = prix;
-        this.nom = nom;
-    }
+
 
     private double prix;
     private String nom;
+
+    public Produit(double prix, String nom, String categorie) {
+        this.prix = prix;
+        this.nom = nom;
+        this.categorie = categorie;
+    }
+
+    private String categorie;
 }
