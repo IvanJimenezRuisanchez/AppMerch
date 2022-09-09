@@ -79,4 +79,8 @@ public class ServiceClient {
         }
         return produitDtos;
     }
+
+    public List<ProduitDto> getProductsByName(String nom) {
+        return toProduitDTOList(produitRepository.findByNom(nom.toUpperCase()));
+    }
 }

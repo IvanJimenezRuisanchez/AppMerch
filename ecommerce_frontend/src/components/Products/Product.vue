@@ -37,7 +37,7 @@
 .product-grid .product-image{
     overflow: hidden;
     position: relative;
-    z-index: 1;
+    z-index: -1;
 }
 .product-grid .product-image a.image{display: block; }
 .product-grid .product-image img{

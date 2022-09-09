@@ -55,8 +55,17 @@ public class RootController {
     @GetMapping(value = "/products")
     @CrossOrigin(origins = "http://localhost:8080")
     @ResponseBody
-    public List<ProduitDto> getDvds() {
+    public List<ProduitDto> getProducts() {
         return serviceClient.getAllProduit();
+    }
+
+    @GetMapping(value = "/productsByName")
+    @CrossOrigin(origins = "http://localhost:8080")
+    @ResponseBody
+    public List<ProduitDto> getProductsByName(@RequestParam("nom") String nom) {
+        System.out.println(nom);
+        System.out.println(serviceClient.getProductsByName(nom));
+        return serviceClient.getProductsByName(nom);
     }
 
 }

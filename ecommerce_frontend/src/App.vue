@@ -14,5 +14,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: black;
+  overflow: hidden;
 }
 </style>
