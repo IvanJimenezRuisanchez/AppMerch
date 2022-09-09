@@ -1,5 +1,4 @@
 <template>
-    <div class="col-2">
         <div class="product-grid">
             <div class="product-image">
                 <a href="#" class="image">
@@ -13,23 +12,23 @@
                 <button class="add-to-cart btn-primary">AJOUTER AU PANIER</button>
             </div>
             <div class="product-content">
-                <h3 class="title"><a href="#">Women's Blouse Top</a></h3>
-                <div class="price">$53.55</div>
+                <h3 class="title"><a href="#">{{nom}}</a></h3>
+                <div class="price">${{prix}}</div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
     export default{
         name: 'Product',
+        props: {
+            'nom' : String,
+            'prix': Number
+        },
     }
 </script>
 
 <style>
-.row{
-    border: none;
-}
 .product-grid{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;

@@ -1,18 +1,25 @@
 package com.ecommerceapp.service;
 
 import com.ecommerceapp.dto.ClientDto;
+import com.ecommerceapp.dto.ProduitDto;
 import com.ecommerceapp.model.Client;
+import com.ecommerceapp.model.Produit;
 import com.ecommerceapp.repository.ClientRepository;
+import com.ecommerceapp.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public class ServiceClient {
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    private ProduitRepository produitRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -59,5 +66,17 @@ public class ServiceClient {
 
     private ClientDto clientToDto(Client client){
         return  new ClientDto(client.getFirstName(),client.getLastName(),client.getEmail(),client.getPassWord(),client.getUuid());
+    }
+
+    public List<ProduitDto> getAllProduit() {
+        return toProduitDTOList(produitRepository.findAll());
+    }
+
+    private List<ProduitDto> toProduitDTOList(List<Produit> produits){
+        List<ProduitDto> produitDtos = new ArrayList<>();
+        for(Produit produit : produits){
+            produitDtos.add(new ProduitDto(produit.getPrix(),produit.getNom()));
+        }
+        return produitDtos;
     }
 }

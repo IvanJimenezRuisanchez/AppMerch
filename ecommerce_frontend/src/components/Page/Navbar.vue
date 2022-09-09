@@ -27,8 +27,8 @@
                 <button id="cancel" class="btn shadow-none" v-on:click="hideSideDiv"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
                 </svg></button></span>
+                <component :is="composant"></component>
             </div>
-            <component :is="composant"></component>
         </div>
     </div>
 </template>
@@ -36,7 +36,7 @@
 <script>
     import LoginVue from '../Authentication/Login.vue'
     export default{
-        name: 'HomePage',
+        name: 'Navbar',
         components:{
              'Login' : LoginVue
         },

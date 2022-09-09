@@ -4,7 +4,7 @@ const CLIENT_RESTAPI_CREATEACCOUNT = 'http://localhost:8081/api/createAccount'
 const CLIENT_RESTAPI_LOGIN = 'http://localhost:8081/api/login'
 const CLIENT_RESTAPI_RESETPASSWORD = 'http://localhost:8081/api/resetPassword'
 const CLIENT_RESTAPI_UPDATEPASSWORD = 'http://localhost:8081/api/updatePassword'
-
+const CLIENT_RESTAPI_PRODUCTS = 'http://localhost:8081/api/products'
 class ClientService {
     createAccount(firstName,lastName,email,passWord){
         return axios.post(CLIENT_RESTAPI_CREATEACCOUNT,{firstName : firstName, lastName : lastName,email: email,passWord : passWord});
@@ -17,6 +17,9 @@ class ClientService {
     }
     updatePassword(passWord,key){
         return axios.post(CLIENT_RESTAPI_UPDATEPASSWORD,{passWord: passWord, key:key})
+    }
+    getProducts(){
+        return axios.get(CLIENT_RESTAPI_PRODUCTS)
     }
 }
 

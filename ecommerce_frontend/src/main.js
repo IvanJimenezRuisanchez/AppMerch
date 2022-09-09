@@ -6,7 +6,7 @@ import Login from './components/Authentication/Login.vue'
 import CreateAccount from './components/Authentication/CreateAccount.vue'
 import UpdatePassword from './components/Authentication/UpdatePassword.vue'
 import ResetPassword from './components/Authentication/ResetPassword.vue'
-import HomePage from './components/Page/HomePage.vue'
+import Store from './components/Page/Store.vue'
 import Product from './components/Products/Product.vue'
 
 const router = createRouter({
@@ -16,7 +16,7 @@ const router = createRouter({
         {path : '/createAccount', name : 'CreateAccount', component : CreateAccount},
         {path : '/updatePassword', name : 'UpdatePassword', component : UpdatePassword},
         {path : '/resetPassword', name : 'ResetPassword', component : ResetPassword},
-        {path: '/', name: 'HomePage', component : HomePage},
+        {path: '/', name: 'Store', component : Store},
         {path: '/product', name: 'Product', component : Product}
     ]
 })

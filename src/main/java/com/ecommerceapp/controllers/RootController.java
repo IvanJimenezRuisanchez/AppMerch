@@ -1,15 +1,13 @@
 package com.ecommerceapp.controllers;
 
-import com.ecommerceapp.dto.ClientDto;
-import com.ecommerceapp.dto.EmailDto;
-import com.ecommerceapp.dto.LoginDto;
-import com.ecommerceapp.dto.ChangePasswordDto;
+import com.ecommerceapp.dto.*;
 import com.ecommerceapp.service.EmailService;
 import com.ecommerceapp.service.ServiceClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -54,5 +52,11 @@ public class RootController {
         serviceClient.resetPassword(changePasswordDto.getPassWord(), changePasswordDto.getKey());
     }
 
+    @GetMapping(value = "/products")
+    @CrossOrigin(origins = "http://localhost:8080")
+    @ResponseBody
+    public List<ProduitDto> getDvds() {
+        return serviceClient.getAllProduit();
+    }
 
 }
