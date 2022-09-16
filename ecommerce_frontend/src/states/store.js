@@ -9,9 +9,11 @@ export default new Vuex.Store({
         state.cart.push(payload)
       },
       delete(state, payload){
+        console.log(state.cart)
         state.cart.forEach(element => {
            if (payload == element.id){
-                state.cart = state.cart.splice(element.id,1)
+                state.cart = state.cart.splice(state.cart.indexOf(element),1)
+                console.log(state.cart)
            }
         });
     } },

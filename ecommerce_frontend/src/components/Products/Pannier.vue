@@ -16,12 +16,12 @@ export default{
     name: "Pannier",
     data() {
         return {
-            cart: ''
+            cart : ''
         };
     },
     mounted(){
       this.cart = store.getters.getCart
-    },
+    },  
     components: { PannierItem }
 }
 </script>
