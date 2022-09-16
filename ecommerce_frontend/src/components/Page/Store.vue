@@ -10,7 +10,7 @@ import Navbar from './Navbar.vue';
         data(){
             return{
                 'navbar' : '',
-                'productList' : ''
+                'productList' : '',
             }
         },
         mounted(){

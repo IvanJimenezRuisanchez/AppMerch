@@ -75,7 +75,7 @@ public class ServiceClient {
     private List<ProduitDto> toProduitDTOList(List<Produit> produits){
         List<ProduitDto> produitDtos = new ArrayList<>();
         for(Produit produit : produits){
-            produitDtos.add(new ProduitDto(produit.getPrix(),produit.getNom(),produit.getCategorie()));
+            produitDtos.add(new ProduitDto(produit.getPrix(),produit.getNom(),produit.getCategorie(),produit.getId()));
         }
         return produitDtos;
     }

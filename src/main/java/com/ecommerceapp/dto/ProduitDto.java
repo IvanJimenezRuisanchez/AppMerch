@@ -8,13 +8,15 @@ import lombok.Data;
 public class ProduitDto {
 
 
-    public ProduitDto(double prix, String nom, String categorie) {
+    public ProduitDto(double prix, String nom, String categorie, Long id) {
         this.prix = prix;
         this.nom = nom;
         this.categorie = categorie;
+        this.id = id;
     }
 
     private double prix;
     private String nom;
     private String categorie;
+    private Long id;
 }

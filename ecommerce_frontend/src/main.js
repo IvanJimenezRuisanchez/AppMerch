@@ -6,7 +6,6 @@ import CreateAccount from './components/Authentication/CreateAccount.vue'
 import UpdatePassword from './components/Authentication/UpdatePassword.vue'
 import ResetPassword from './components/Authentication/ResetPassword.vue'
 import Store from './components/Page/Store.vue'
-import Product from './components/Products/Product.vue'
 
 const router = createRouter({
     history: createWebHistory(),

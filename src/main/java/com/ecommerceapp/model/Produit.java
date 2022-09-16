@@ -21,7 +21,8 @@ public class Produit {
     private double prix;
     private String nom;
 
-    public Produit(double prix, String nom, String categorie) {
+    public Produit(long id, double prix, String nom, String categorie) {
+        this.id = id;
         this.prix = prix;
         this.nom = nom;
         this.categorie = categorie;

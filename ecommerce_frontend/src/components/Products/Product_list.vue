@@ -31,7 +31,8 @@
     <div class="container">
     <div class="row">
       <div class="col-3 mt-5"  v-for="product in products">
-            <Product :prix="product.prix" :nom="product.nom"></Product>
+            <Product :prix="product.prix" :nom="product.nom" :id="product.id"></Product>
+            <button class="add-to-cart btn-primary" type="submit" v-on:click="addToPannier(product)">AJOUTER AU PANIER</button>
       </div>
     </div>
   </div>
@@ -39,6 +40,7 @@
 <script>
 import Product from "./Product.vue";
 import ClientService from "@/service/ClientService";
+import store from "@/states/store";
 export default {
   name: "ProductList",
   components: {
@@ -55,6 +57,9 @@ export default {
   methods :{
     chercherProduitsParNom : function(){
         ClientService.getProductsByName(this.param).then(response => ( this.products = response.data));
+    },
+    addToPannier : function(product){
+        store.commit('addToCart',product)
     },
     chercherProduitsParCategorie : function(){
           if(this.checked == 'tous'){
@@ -73,5 +78,16 @@ export default {
 <style>
   .container .row{
     border: none;
+  }
+  .add-to-cart{
+    background: mediumseagreen;
+    color: black;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 100%;
+    border: none;
+    padding: 10px 26px;
+    font-weight: bold;
   }
 </style>
