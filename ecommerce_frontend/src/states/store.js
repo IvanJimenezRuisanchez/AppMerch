@@ -2,20 +2,20 @@ import Vuex from 'vuex'
 
 export default new Vuex.Store({
     state:{
-      cart: []
+      cart: [],
     },
     mutations:{
       addToCart(state, payload){
-        state.cart.push(payload)
+        if(state.cart.indexOf(payload) == -1){
+          state.cart.push(payload)
+        }
       },
       delete(state, payload){
-        console.log(state.cart)
-        state.cart.forEach(element => {
-           if (payload == element.id){
-                state.cart = state.cart.splice(state.cart.indexOf(element),1)
-                console.log(state.cart)
-           }
-        });
+        for (var i = 0; i < state.cart.length; i++) {
+          if (state.cart[i].id == payload) {
+              var spliced = state.cart.splice(i, 1);
+          }
+      }
     } },
     actions:{
       addToCart(state, payload){
