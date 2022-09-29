@@ -1,6 +1,7 @@
 <template>
    <div class="container"></div>
-    <div  class="row mt-5 mb-2 justify-content-end">
+    <div  class="row mt-5 mb-2 justify-content-start">
+      <div class="col-2" ></div>
       <div class="col-3">
         <div class="form-check form-check-inline ">
           <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="chandail" v-model="checked" v-on:change="chercherProduitsParCategorie">
@@ -26,13 +27,11 @@
             </span>
         </div>
       </div>
-      <div class="col-2" ></div>
     </div>
     <div class="container">
     <div class="row">
-      <div class="col-3 mt-5"  v-for="product in products">
-            <Product :prix="product.prix" :nom="product.nom" :id="product.id"></Product>
-            <button class="add-to-cart btn-primary" type="submit" v-on:click="addToPannier(product)">AJOUTER AU PANIER</button>
+      <div class="col-4 mt-5"  v-for="product in products">
+            <Product :prix="product.prix" :nom="product.nom" :id="product.id" type="button" v-on:click="productDetails(product.id)"></Product>
       </div>
     </div>
   </div>
@@ -68,11 +67,17 @@ export default {
             ClientService.getProductsByCategory(this.checked).then(response => ( this.products = response.data));
           }
 
+    },
+    productDetails : function(id){
+      store.commit("addProductId",id)
+      this.$router.push("ProductDetails")
     }
-  },
+  }
+  ,
   mounted(){
+    store.commit('loadProducts')
     ClientService.getProducts().then(response => ( this.products = response.data));
-}
+  },
 }
 </script>
 <style>
@@ -80,7 +85,7 @@ export default {
     border: none;
   }
   .add-to-cart{
-    background: mediumseagreen;
+    background: RGB(239, 192, 80);
     color: black;
     font-size: 16px;
     text-transform: uppercase;

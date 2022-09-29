@@ -1,17 +1,10 @@
 <template>
-        <div class="product-grid">
-            <div class="product-image">
+        <div class="product-grid p-2">
+            <div class="product-image mb-2">
                 <a href="#" class="image">
                     <img src="../../assets/img/jordan.jpg">
                 </a>
-                <ul class="product-links">
-                    <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg></a></li>
-                </ul>
-            </div>
-            <div class="product-content">
-                <h3 class="title"><a href="#">{{nom}}</a></h3>
+                <div class="title">{{nom}}</div>
                 <div class="price">${{prix}}</div>
             </div>
         </div>
@@ -31,7 +24,6 @@
 .product-grid{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
-    box-shadow: 1px -2px 15px -3px rgba(0,0,0,0.58);
 }
 .product-grid .product-image{
     overflow: hidden;
@@ -88,19 +80,18 @@
     border: 3px double rgba(0,0,0,0.14);;
 }
 .product-grid .title{
-    font-size: 16px;
+    font-size: xx-large;
     font-weight: 600;
-    text-transform: capitalize;
     margin: 0 0 7px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    float: left;
 }
-.product-grid .title a{
-    color: black;
-    transition: all 0.3s ease 0s;
-}
-.product-grid .title a:hover{ color: mediumseagreen; }
 .product-grid .price{
+    clear: both;
+    float: left;
     color: #0d0d0d;
-    font-size: medium;
+    font-size: large;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
 }

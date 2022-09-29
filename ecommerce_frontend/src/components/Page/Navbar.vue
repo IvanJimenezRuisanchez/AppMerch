@@ -34,6 +34,7 @@
 </template>
 
 <script>
+    import store from "@/states/store"
     import LoginVue from '../Authentication/Login.vue'
     import Pannier from '../Products/Pannier.vue'
     export default{
@@ -46,8 +47,11 @@
             return {
                 section : '',
                 composant : '',
-                items : 0 
+                items : ''
             }
+        },
+        async mounted(){
+            this.items =store.getters.getPanierItems
         },
         methods: {
         showLogin : function(section){
@@ -68,6 +72,15 @@
 </script>
 
 <style scoped>
+    #menu{
+        border: none;
+        color: black;
+        margin-left: 20px;
+        padding: 0;
+    }
+    .navbar{
+        background-color: RGB(239, 192, 80);
+    }
     .container-fluid{
         -webkit-box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.27); 
     }

@@ -5,7 +5,8 @@ import App from './App.vue'
 import CreateAccount from './components/Authentication/CreateAccount.vue'
 import UpdatePassword from './components/Authentication/UpdatePassword.vue'
 import ResetPassword from './components/Authentication/ResetPassword.vue'
-import Store from './components/Page/Store.vue'
+import ProducDetails from '../src/components/Products/ProductDetails.vue'
+import Product_List from '../src/components/Products/Product_list.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -13,7 +14,8 @@ const router = createRouter({
         {path : '/createAccount', name : 'CreateAccount', component : CreateAccount},
         {path : '/updatePassword', name : 'UpdatePassword', component : UpdatePassword},
         {path : '/resetPassword', name : 'ResetPassword', component : ResetPassword},
-        {path: '/', name: 'Store', component : Store},
+        {path: '/', name: 'Store', component : Product_List},
+        {path: '/productDetails' , name: 'ProductDetails',component : ProducDetails}
     ]
 })
 
