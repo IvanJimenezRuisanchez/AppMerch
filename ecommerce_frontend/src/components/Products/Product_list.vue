@@ -72,6 +72,7 @@ export default {
   }
   ,
   mounted(){
+    store.commit('loadProducts')
     ClientService.getProducts().then(response => ( this.products = response.data));
   },
 }

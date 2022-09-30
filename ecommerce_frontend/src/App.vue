@@ -5,10 +5,11 @@
 
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Sidebar from './components/Page/Sidebar.vue'
 import Navbar from './components/Page/Navbar.vue';
 export default {
     name: "App",
-    components: { Navbar }
+    components: { Sidebar, Navbar }
 }
 
 </script>

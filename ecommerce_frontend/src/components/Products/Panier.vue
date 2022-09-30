@@ -11,9 +11,9 @@
 
 <script>
 import store from "@/states/store";
-import PannierItem from "./PannierItem";
+import PannierItem from "./PanierItem";
 export default{
-    name: "Pannier",
+    name: "Panier",
     data() {
         return {
             cart : ''
