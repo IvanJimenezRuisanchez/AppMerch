@@ -57,9 +57,6 @@ export default {
     chercherProduitsParNom : function(){
         ClientService.getProductsByName(this.param).then(response => ( this.products = response.data));
     },
-    addToPannier : function(product){
-        store.commit('addToCart',product)
-    },
     chercherProduitsParCategorie : function(){
           if(this.checked == 'tous'){
             ClientService.getProducts().then(response => ( this.products = response.data));
@@ -75,7 +72,6 @@ export default {
   }
   ,
   mounted(){
-    store.commit('loadProducts')
     ClientService.getProducts().then(response => ( this.products = response.data));
   },
 }

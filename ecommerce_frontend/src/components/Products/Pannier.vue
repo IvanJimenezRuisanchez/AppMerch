@@ -2,7 +2,7 @@
         <div class="card">
           <div class="card-body">
             <div class="col-12"  v-for="product in cart">
-              <PannierItem :prix = product.prix :nom = product.nom :id=product.id></PannierItem>
+              <PannierItem :product=product></PannierItem>
             </div>
             <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
           </div>
@@ -27,4 +27,7 @@ export default{
 </script>
 
 <style>
+  .card{
+    border: none;
+  }
 </style>

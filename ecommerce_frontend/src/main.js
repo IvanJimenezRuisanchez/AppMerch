@@ -14,7 +14,7 @@ const router = createRouter({
         {path : '/createAccount', name : 'CreateAccount', component : CreateAccount},
         {path : '/updatePassword', name : 'UpdatePassword', component : UpdatePassword},
         {path : '/resetPassword', name : 'ResetPassword', component : ResetPassword},
-        {path: '/', name: 'Store', component : Product_List},
+        {path: '/', name: 'Home', component : Product_List},
         {path: '/productDetails' , name: 'ProductDetails',component : ProducDetails}
     ]
 })

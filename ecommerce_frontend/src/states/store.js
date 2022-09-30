@@ -1,9 +1,14 @@
-import Vuex from 'vuex'
 import ClientService from '@/service/ClientService'
+import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
+
 export default new Vuex.Store({
+    plugins: [createPersistedState({
+      storage: window.sessionStorage,
+    })],
     state:{
       cart: [],
-      panierItems : 10,
+      panierItems : 0,
       products: '',
       productId: 0
     },
@@ -19,7 +24,10 @@ export default new Vuex.Store({
           if (state.cart[i].id == payload) {
               var spliced = state.cart.splice(i, 1);
           }
-          state.panierItems-=1
+          if(state.panierItems != 0)
+            state.panierItems-=1
+          else
+            state.panierItems=0
       }
       },
       addProducts(state, payload){

@@ -50,8 +50,10 @@
                 items : ''
             }
         },
-        async mounted(){
+        mounted(){
             this.items =store.getters.getPanierItems
+            store.commit('loadProducts')
+            console.log(store.getters.getCart)
         },
         methods: {
         showLogin : function(section){
