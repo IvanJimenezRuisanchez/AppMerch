@@ -1,15 +1,14 @@
 <template>
-  <Navbar></Navbar>
+  <Sidebar></Sidebar>
   <router-view></router-view>
 </template>
 
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Sidebar from './components/Page/Sidebar.vue'
-import Navbar from './components/Page/Navbar.vue';
+import Sidebar from './components/Page/Sidebar.vue';
 export default {
     name: "App",
-    components: { Sidebar, Navbar }
+    components: { Sidebar}
 }
 
 </script>

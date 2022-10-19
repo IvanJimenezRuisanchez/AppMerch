@@ -1,94 +1,168 @@
 <template>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <div class="container-fluid"><button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                            <li class="nav-item active"><a class="nav-link" href="#!">Home </a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="#!">Action</a><a class="dropdown-item" href="#!">Another action</a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#!">Something else here</a>
-                                </div>
-                            </li>
+    <nav class="navbar navbar-expand-lg ">
+        <div id="menuLinks">
+            <a class="" href="#">Account</a>
+            <a class="" href="#">Panier</a>
+        </div>
+        <button id="menu" class="menu" type="button" v-on:click="menu">
+            <span class="fas fa-bars" id="menuSpan"></span>
+        </button>
+    </nav>
+    <nav id="sidebar" class="sidebar">
+                <ul>
+                    <li><a>Home</a></li>
+                    <li>
+                        <a v-on:click="toggleVisibility">Collection
+                            <span id="span" class="fas fa-caret-down first"></span>
+                        </a>
+                        <div class="details" v-if="isVisible" v-on:click="toggleVisibility()">
+                            <ul>
+                            <li><a href="">All</a></li>
+                            <li><a href="">C-4000</a></li>
+                            <li><a href="">T-shirts</a></li>
+                            <li><a href="">Hoodies</a></li>
                         </ul>
-                    </div>
-                </div>
+                        </div>
+                    </li>
+                    <li><a>Login</a></li>
+                    <li><a>Register</a></li>
+                    <li><a>Panier</a></li>
+                </ul>
             </nav>
-            <div class="d-flex" id="wrapper">
-                <!-- Sidebar-->
-                <div class="border-end bg-white" id="sidebar-wrapper">
-                    <div class="list-group list-group-flush">
-                        <div><a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a></div>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
-                    </div>
-                </div>
-            </div><!-- Page content wrapper-->
 </template>
 <script>
-    window.addEventListener('DOMContentLoaded', event => {
-
-// Toggle the side navigation
-const sidebarToggle = document.body.querySelector('#sidebarToggle');
-if (sidebarToggle) {
-    /*if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-        document.body.classList.toggle('sb-sidenav-toggled');
-    }*/
-    sidebarToggle.addEventListener('click', event => {
-        event.preventDefault();
-        document.body.classList.toggle('sb-sidenav-toggled');
-        localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-    });
+export default {
+    name: 'Sidebar',
+    data() {
+        return {
+            isVisible: false,
+            isMenuVisible : false,
+        }
+    },
+    methods : {
+        toggleVisibility() {
+            this.isVisible = !this.isVisible
+        },
+        menu (){
+            if(document.getElementById("menu").style.left == '260px'){
+                document.getElementById("menu").style.left = '45px'
+                document.getElementById("sidebar").style.left = '-250px'
+            }
+            else{
+                document.getElementById("menu").style.left = '260px'
+                document.getElementById("sidebar").style.left = '0px'
+            }
+        }
+    },
 }
-
-});
 </script>
 <style>
-    #wrapper {
-    overflow-x: hidden;
-}
-
-#sidebar-wrapper {
-    min-height: 100vh;
-    margin-left: -15rem;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
-}
-
-#sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-}
-
-#sidebar-wrapper .list-group {
-    width: 15rem;
-}
-
-#page-content-wrapper {
-    min-width: 100vw;
-}
-
-body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
-    margin-left: 0;
-}
-
-@media (min-width: 768px) {
-    #sidebar-wrapper {
-        margin-left: 0;
+    .navbar{
+        background-color: #1e1e1e;
     }
-
-    #page-content-wrapper {
-        min-width: 0;
+    #menuLinks{
+        color: white;
+        position: absolute;
+        right: 10%;
+    }
+    #menuLinks a{
+        text-decoration: none;
+        font-size: 18px;
+        padding-left: 40px;
+        font-weight: 500;
         width: 100%;
+        color: white;
+    }
+    #menuLinks a:hover{
+       color: orange;
+       background-color: #1e1e1e;
+    }
+    .menu{
+        position: relative;
+        left: 45px;
+        height: 45px;
+        width: 45px;
+        text-align: center;
+        background-color: #1e1e1e;
+        border-radius: 3px;
+        transition: left 0.4s ease;
+        color: white;
+    }
+    .sidebar{
+       position: fixed;
+       width: 250px;
+       height: 100%;
+       left: -250px;
+       background: #1e1e1e;
+       text-align: start;
+       font-family: Arial, Helvetica, sans-serif;
+       box-sizing: border-box;
+       transition: left 0.4s ease;
+    }
+    nav ul{
+        color: black;
+        background-color: #1b1b1b;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+    }
+    nav ul li { 
+        line-height: 60px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+    nav ul li a{ 
+        position: relative;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding-left: 40px;
+        font-weight: 500;
+        display: block;
+        width: 100%;
+        border-left: 3px solid transparent;
+    }
+    nav ul li:hover{ 
+       color: orange;
+       background-color: #1e1e1e;
+       border-left-color: orange;
+    }
+    nav ul li a:hover{ 
+       color: orange;
+       background-color: #1e1e1e;
+       border-left-color: orange;
+    }
+    .sidebar .text{
+        color: white;
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 65px;
+        text-align: center;
+        background-color: #1e1e1e;
+        letter-spacing: 1px;
     }
 
-    body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
-        margin-left: -15rem;
+    nav ul ul li{
+        line-height: 42px;
+        border-bottom: none;
     }
-}
+    nav ul ul li a{
+        font-size: 17px;
+        color: #e6e6e6;
+        padding-left: 80px;
+    }
+    #span{
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        font-size: 22px;
+        transition: transform 0.4s;
+    }
+    nav ul li a #span.rotate{
+        transform: translateY(-50%) rotate(-180deg);
+    }
+
 </style>
