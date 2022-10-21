@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
-            <div class="col-3">
+            <div class="col-4">
                 <form id="login" action=""   >
                     <div class="form-group">
                         <h2>S'inscrire</h2>

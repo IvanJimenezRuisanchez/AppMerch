@@ -7,8 +7,8 @@ import UpdatePassword from './components/Authentication/UpdatePassword.vue'
 import ResetPassword from './components/Authentication/ResetPassword.vue'
 import ProducDetails from '../src/components/Products/ProductDetails.vue'
 import Product_List from '../src/components/Products/Product_list.vue'
-import Sidebar from '../src/components/Page/Sidebar.vue'
-
+import Login from '../src/components/Authentication/Login.vue'
+import Panier from '../src/components/Products/Panier.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes : [
@@ -17,7 +17,8 @@ const router = createRouter({
         {path : '/resetPassword', name : 'ResetPassword', component : ResetPassword},
         {path: '/', name: 'Home', component : Product_List},
         {path: '/productDetails' , name: 'ProductDetails',component : ProducDetails},
-        {path: '/sideBar' , name: 'Sidebar',component : Sidebar}
+        {path: '/login', name:'Login',component : Login},
+        {path: '/panier', name:'Panier', component : Panier}
     ]
 })
 
